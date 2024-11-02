@@ -5,18 +5,10 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - webapp
+      - ./nginx.conf:/etc/nginx/nginx.conf
 
   webapp:
-    image: your-webapp-image:latest
-    container_name: webapp
-    build:
-      context: ./webapp
-      dockerfile: Dockerfile
-    ports:
-      - "3000" # Only exposed to nginx, not to the host
+    image: webapp:latest
 
 volumes:
   nginx_conf:
